@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Re-Malwack</string>
+    <string name="my_default_tile_label">Re-Malwack</string>
+    <string name="please_grant_root">Please grant root access.</string>
+</resources>

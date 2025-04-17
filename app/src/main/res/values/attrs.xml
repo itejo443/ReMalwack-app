@@ -1,0 +1,4 @@
+<resources>
+    <attr name="colorBackground" format="color"/>
+    <attr name="colorOnBackground" format="color"/>
+</resources>
