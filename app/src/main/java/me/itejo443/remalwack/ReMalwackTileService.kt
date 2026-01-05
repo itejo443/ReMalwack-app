@@ -395,7 +395,6 @@ class ReMalwackTileService : TileService() {
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setContentIntent(pendingIntent)
             .addAction(R.drawable.ic_noty_update, "Update", updatePendingIntent)
-            .addAction(R.drawable.ic_noty_webui, "WebUI", webuiPendingIntent)
             .addAction(R.drawable.ic_noty_reset, "Reset", resetPendingIntent)
             .addAction(R.drawable.ic_noty_pause, pauseOrResumeLabel, pauseOrResumePending)
             .setOngoing(true)
