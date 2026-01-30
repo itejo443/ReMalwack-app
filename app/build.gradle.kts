@@ -25,14 +25,15 @@ android {
             keyPassword = System.getenv("KEY_PASSWORD")
         }
     }
+
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                          "proguard-rules.pro"
             )
-            signingConfig = signingConfigs["release"]  // Associate signing config with release build
+            signingConfig = signingConfigs["release"] // Associate signing config with release build
         }
     }
     compileOptions {

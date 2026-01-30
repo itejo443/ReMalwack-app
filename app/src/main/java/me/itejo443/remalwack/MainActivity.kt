@@ -52,6 +52,18 @@ class MainActivity : AppCompatActivity(), FileSystemService.Listener {
                 Toast.makeText(this, "Notification Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
+
+        val toastSwitch: SwitchCompat = findViewById(R.id.toastSwitch)
+        val prefs = getSharedPreferences("tile_prefs", Context.MODE_PRIVATE)
+        // load saved value
+        toastSwitch.isChecked = prefs.getBoolean("enable_toasts", true)
+        toastSwitch.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit()
+            .putBoolean("enable_toasts", isChecked)
+            .apply()
+            val msg = if (isChecked) "Toasts enabled" else "Toasts disabled"
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun requestNotificationPermission() {

@@ -291,9 +291,16 @@ class ReMalwackTileService : TileService() {
 
     private fun showToast(message: String) {
         try {
+            val prefs = getSharedPreferences(prefsFileName, Context.MODE_PRIVATE)
+            // 🔕 respect user toggle
+            if (!prefs.getBoolean("enable_toasts", true)) {
+                // still store + refresh notification
+                prefs.edit().putString("last_toast_message", message).apply()
+                updateNotification(getLastToastMessage(), getLastModifiedDate())
+                return
+            }
             Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-            val sharedPreferences = getSharedPreferences(prefsFileName, Context.MODE_PRIVATE)
-            sharedPreferences.edit().putString("last_toast_message", message).apply()
+            prefs.edit().putString("last_toast_message", message).apply()
             updateNotification(getLastToastMessage(), getLastModifiedDate())
         } catch (e: Exception) {
             Log.e("ShowToastError", "Failed to show toast message: $message", e)
